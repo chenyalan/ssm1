@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:p="http://www.springframework.org/schema/p"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:mvc="http://www.springframework.org/schema/mvc"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://www.springframework.org/schema/mvc
+       http://www.springframework.org/schema/mvc/spring-mvc-4.0.xsd
+       http://www.springframework.org/schema/context
+       http://www.springframework.org/schema/context/spring-context.xsd">
+
+    <!--配置拦截器-->
+    <!-- 配置自定义的拦截器 -->
+    <mvc:interceptors>
+        <!-- 这个bean就是自定义的一个类，拦截器 -->
+        <!--<bean class="com.andlinks.demo.filter.FilterInterceptor"></bean>-->
+        <!-- 这个配置可以配置拦截器作用（不作用）的路径,不起作用的用<mvc:exclude-mapping path=""/> -->
+        <mvc:interceptor>
+            <!-- 这个path就是起作用的路径，可以使用通配符 -->
+            <mvc:mapping path="/student/*"/>
+            <bean class="com.andlinks.demo.filter.FilterInterceptor"></bean>
+        </mvc:interceptor>
+    </mvc:interceptors>
+
+</beans>
